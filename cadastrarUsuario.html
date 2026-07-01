@@ -7,12 +7,16 @@
 </head>
 <body>
     <div class="tab-content active">
-        <h2>LOGIN</h2>
+        <h2>Cadastro</h2>
+
+        <input type="text" id="nome" placeholder="Nome">
         <input type="text" id="email" placeholder="Email">
         <input type="number" id="senha" placeholder="Senha">
-        <button onclick="logar()">Entrar</button>
-        <div class="resultado" id="resultadoImc"></div>
-        <script src="index.js"></script>
+
+        <button onclick="cadastrarUsuario()">Cadastrar</button>
+
+        <div class="resultado" id="resultadoLogin"></div>
     </div>
+    <script src="index.js"></script>
 </body>
 </html>
