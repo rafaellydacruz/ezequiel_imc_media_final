@@ -1,3 +1,7 @@
+if(window.location.pathname.endsWith('index.html') && !localStorage.getItem('token')){
+    window.location.href='login.html'
+}
+
 function abrirTab(index){
     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(bnt => bnt.classList.remove('active'));
@@ -26,6 +30,38 @@ function formatarResposta(resultado){
     </div>`;
     return html;
 }
+
+async function logar(){
+    const dados = {
+        email:  document.getElementById("email").value,
+        senha: document.getElementById("senha").value
+    };
+
+    try {
+        const res = await fetch('http://localhost:3000/login', {
+            method: "POST", 
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(dados)
+        });
+        const resultado = await res.json();
+        if(resultado.token){
+            localStorage.setItem("token", resultado.token);
+            window.location.href = "index.html";
+        }
+           else{ alert(resultado.erro) }
+       
+            
+    } catch (erro) {
+            alert( resultado.erro)
+    }
+}
+function logout(){
+    localStorage.removeItem('token')
+    window.location.href='login.html'
+}
+
     async function calcularImc(){
         const dados = {
             nome:  document.getElementById("nome").value,
@@ -53,12 +89,12 @@ function formatarResposta(resultado){
     async function calcularMedia(){
         const dados = {
             nome:  document.getElementById("nome").value,
-            nota1: document.getElementById("nota1").value,
-            nota2: document.getElementById("nota2").value
+            email: document.getElementById("email").value,
+            senha: document.getElementById("senha").value
         };
 
         try {
-            const res = await fetch('http://localhost:3000/media', {
+            const res = await fetch('http://localhost:3000/usuarios', {
                 method: "POST", 
                 headers: {
                     "content-type": "application/json"
@@ -73,4 +109,3 @@ function formatarResposta(resultado){
             });
         }
     }
-
