@@ -22,6 +22,6 @@ async function logar(){
        
             
     } catch (erro) {
-            erro: "Ocorreu um erro inesperado. Por favor tente novemente mais tarde."
+            alert( "Ocorreu um erro inesperado. Por favor tente novemente mais tarde.")
     }
 }
