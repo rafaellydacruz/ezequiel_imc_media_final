@@ -102,8 +102,8 @@ function logout(){
     async function cadastrarUsuario(){
         const dados = {
             nome:  document.getElementById("nome").value,
-            cpf: document.getElementById("email").value,
-            cep: document.getElementById("senha").value
+            email: document.getElementById("email").value,
+            senha: document.getElementById("senha").value
         };
 
         try {
@@ -126,7 +126,7 @@ function logout(){
            
                 
         } catch (erro) {
-                alert( "Falha na cominicação com o servidor.")
+                alert( erro)
         }
     }
     async function calcularMedia(){
