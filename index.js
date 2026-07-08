@@ -143,6 +143,7 @@ async function cadastrarClientes(){
         });
 
     }
+<<<<<<< HEAD
 
 }
 
@@ -182,6 +183,36 @@ async function cadastrarUsuario(){
 
             alert("Cadastro inválido");
 
+=======
+    async function cadastrarUsuario(){
+        const dados = {
+            nome:  document.getElementById("nome").value,
+            email: document.getElementById("email").value,
+            senha: document.getElementById("senha").value
+        };
+
+        try {
+            const res = await fetch('http://localhost:3000/usuarios', {
+                method: "POST", 
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(dados)
+            });
+            
+            const resultado = await res.json();
+            if(resultado.token){
+                localStorage.setItem("token", resultado.token);
+                window.location.href = "index.html";
+            }
+               else{ 
+                alert("cadastro inválido");
+            }
+           
+                
+        } catch (erro) {
+                alert( erro)
+>>>>>>> b44a4f87d49d0840897b28b7613fb6e36c210bb5
         }
 
 
